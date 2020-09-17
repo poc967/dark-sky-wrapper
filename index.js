@@ -49,4 +49,4 @@ weatherAPI.prototype.getWeeklyForecast = function (latitude, longitude) {
 };
 
 var api = new weatherAPI(process.env.API_KEY);
-api.getWeatherAlerts(42.3601, -71.0589).then((data) => console.log(data));
+api.getCurrentWeather(42.3601, -71.0589).then((data) => console.log(data));
