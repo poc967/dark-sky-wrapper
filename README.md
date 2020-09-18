@@ -10,11 +10,15 @@ rename the .env-sample file to .env and set the api key
 
 Initialize the library and set the api key from darksky from the
 
-`javascript var api = new weatherAPI(process.env.API_KEY);`
+```javascript
+var api = new weatherAPI(process.env.API_KEY);
+```
 
 Make a call for current weather for a particular place by coordinates
 
-`javascript api.getCurrentWeather(42.3601, -71.0589).then((data) => console.log(data));`
+```javascript
+api.getCurrentWeather(42.3601, -71.0589).then((data) => console.log(data));
+```
 
 Response:
 
@@ -41,3 +45,7 @@ Response:
   ozone: 296.6
 }
 ```
+
+## Darksky API docs can be found here for more details
+
+https://darksky.net/dev/docs
