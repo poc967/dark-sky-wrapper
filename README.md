@@ -20,7 +20,7 @@ Make a call for current weather for a particular place by coordinates
 api.getCurrentWeather(42.3601, -71.0589).then((data) => console.log(data));
 ```
 
-Response:
+**Response:**
 
 ```JSON
 {
@@ -48,4 +48,4 @@ Response:
 
 ## Darksky API docs can be found here for more details
 
-https://darksky.net/dev/docs
+**https://darksky.net/dev/docs**
