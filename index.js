@@ -1,5 +1,6 @@
 const axios = require("axios");
 require("dotenv").config();
+axios.defaults.adapter = require("axios/lib/adapters/http");
 
 // initialize the weatherAPI object with auth key and base url for requests
 function weatherAPI(apiKey) {
@@ -48,5 +49,4 @@ weatherAPI.prototype.getWeeklyForecast = function (latitude, longitude) {
   return this.request(args);
 };
 
-var api = new weatherAPI(process.env.API_KEY);
-api.getCurrentWeather(42.3601, -71.0589).then((data) => console.log(data));
+module.exports = weatherAPI;
