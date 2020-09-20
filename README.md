@@ -46,6 +46,9 @@ api.getCurrentWeather(42.3601, -71.0589).then((data) => console.log(data));
 }
 ```
 
+**Run tests**
+`npm run test`
+
 ## Darksky API docs can be found here for more details
 
 **https://darksky.net/dev/docs**
