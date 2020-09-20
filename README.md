@@ -6,12 +6,10 @@ This is a simple node.js wrapper for the darksky weather API.
 
 `npm install --save dark-sky-wrapper`
 
-rename the .env-sample file to .env and set the api key
-
-Initialize the library and set the api key from darksky from the
+Initialize the package and set the api key from darksky
 
 ```javascript
-var api = new weatherAPI(process.env.API_KEY);
+var api = new weatherAPI("your api key here");
 ```
 
 Make a call for current weather for a particular place by coordinates
@@ -46,7 +44,8 @@ api.getCurrentWeather(42.3601, -71.0589).then((data) => console.log(data));
 }
 ```
 
-**Run tests**
+## Run tests
+
 `npm run test`
 
 ## Darksky API docs can be found here for more details
