@@ -18,6 +18,12 @@ Make a call for current weather for a particular place by city, state, zip, or f
 api.getCurrentWeather("Boston").then((data) => console.log(data));
 ```
 
+You can also make a call for a weekly forecast
+
+```javascript
+api.getWeeklyForecast("Boston").then((data) => console.log(data));
+```
+
 **Response:**
 
 ```json

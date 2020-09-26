@@ -17,15 +17,13 @@ weatherAPI.prototype.request = async function (args) {
   try {
     const response = await axios({ method, url });
     return response.data[args.type];
-  } catch (error) {
-    console.log(error);
-  }
+  } catch (error) {}
 };
 
 weatherAPI.prototype.geocode = async function (location) {
   try {
     const decimalCoordinates = await axios.get(
-      `http://www.mapquestapi.com/geocoding/v1/address?key=${this.mapquestKey}&location=${location}`
+      `https://www.mapquestapi.com/geocoding/v1/address?key=${this.mapquestKey}&location=${location}`
     );
     return decimalCoordinates.data.results[0].locations[0].latLng;
   } catch (error) {}
