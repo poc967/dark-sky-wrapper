@@ -12,7 +12,7 @@ Initialize the package and set the api key from darksky and mapquest
 var api = new weatherAPI("yourDarkskyAPIKey", "yourMapQuestAPIKey");
 ```
 
-Make a call for current weather for a particular place by coordinates
+Make a call for current weather for a particular place by city, state, zip, or full address
 
 ```javascript
 api.getCurrentWeather("Boston").then((data) => console.log(data));
@@ -51,4 +51,5 @@ api.getCurrentWeather("Boston").then((data) => console.log(data));
 ## Darksky API and MapQuest geocode API docs can be found here for more details
 
 **https://darksky.net/dev/docs**
+
 **https://developer.mapquest.com/documentation/geocoding-api/**
