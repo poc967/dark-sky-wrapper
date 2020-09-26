@@ -1,8 +1,9 @@
 {
-  "name": "spotify-wrapper",
+  "name": "dark-sky-wrapper",
   "version": "1.0.0",
-  "description": "A simple wrapper for interacting with the Spotify API",
+  "description": "A simple wrapper for interacting with the darksky API",
   "main": "index.js",
+  "repository": "https://github.com/poc967/dark-sky-wrapper.git",
   "scripts": {
     "test": "mocha test/index-test.js",
     "start": "node index.js"
