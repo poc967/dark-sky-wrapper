@@ -1,21 +1,21 @@
 # dark-sky-wrapper
 
-This is a simple node.js wrapper for the darksky weather API.
+This is a simple node.js wrapper for the darksky weather API. Program uses the MapQuest geocoding API to convert location input as full address, city, state, or postal code to decimal coordinates.
 
 ## Usage
 
 `npm install --save dark-sky-wrapper`
 
-Initialize the package and set the api key from darksky
+Initialize the package and set the api key from darksky and mapquest
 
 ```javascript
-var api = new weatherAPI("your api key here");
+var api = new weatherAPI("yourDarkskyAPIKey", "yourMapQuestAPIKey");
 ```
 
 Make a call for current weather for a particular place by coordinates
 
 ```javascript
-api.getCurrentWeather(42.3601, -71.0589).then((data) => console.log(data));
+api.getCurrentWeather("Boston").then((data) => console.log(data));
 ```
 
 **Response:**
@@ -48,6 +48,7 @@ api.getCurrentWeather(42.3601, -71.0589).then((data) => console.log(data));
 
 `npm run test`
 
-## Darksky API docs can be found here for more details
+## Darksky API and MapQuest geocode API docs can be found here for more details
 
 **https://darksky.net/dev/docs**
+**https://developer.mapquest.com/documentation/geocoding-api/**

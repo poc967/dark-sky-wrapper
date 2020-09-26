@@ -3,8 +3,9 @@ require("dotenv").config();
 axios.defaults.adapter = require("axios/lib/adapters/http");
 
 // initialize the weatherAPI object with auth key and base url for requests
-function weatherAPI(apiKey) {
+function weatherAPI(apiKey, mapquestKey) {
   this.authKey = apiKey;
+  this.mapquestKey = mapquestKey;
   this.baseUrl = "https://api.darksky.net";
 }
 
@@ -21,6 +22,15 @@ weatherAPI.prototype.request = async function (args) {
   }
 };
 
+weatherAPI.prototype.geocode = async function (location) {
+  try {
+    const decimalCoordinates = await axios.get(
+      `http://www.mapquestapi.com/geocoding/v1/address?key=${this.mapquestKey}&location=${location}`
+    );
+    return decimalCoordinates.data.results[0].locations[0].latLng;
+  } catch (error) {}
+};
+
 weatherAPI.prototype.getAuthKey = function () {
   return this.authKey;
 };
@@ -29,24 +39,36 @@ weatherAPI.prototype.setAuthKey = function (apiKey) {
   this.authKey = apiKey;
 };
 
-weatherAPI.prototype.getCurrentWeather = function (latitude, longitude) {
-  const args = {
-    endpoint: `/forecast/${this.authKey}/${latitude},${longitude}?exclude=flags,daily,hourly,minutely`,
-    method: "GET",
-    type: "currently",
-  };
+weatherAPI.prototype.getCurrentWeather = async function (location) {
+  const data = await this.geocode(location);
 
-  return this.request(args);
+  if (data) {
+    const args = {
+      endpoint: `/forecast/${this.authKey}/${data.lat},${data.lng}?exclude=flags,daily,hourly,minutely`,
+      method: "GET",
+      type: "currently",
+    };
+
+    return this.request(args);
+  } else {
+    throw new Error("The provided location could not be geocoded");
+  }
 };
 
-weatherAPI.prototype.getWeeklyForecast = function (latitude, longitude) {
-  args = {
-    endpoint: `/forecast/${this.authKey}/${latitude},${longitude}?exclude=currently,hourly,minutely,flags`,
-    method: "GET",
-    type: "daily",
-  };
+weatherAPI.prototype.getWeeklyForecast = async function (location) {
+  const data = await this.geocode(location);
 
-  return this.request(args);
+  if (data) {
+    args = {
+      endpoint: `/forecast/${this.authKey}/${data.lat},${data.lng}?exclude=currently,hourly,minutely,flags`,
+      method: "GET",
+      type: "daily",
+    };
+
+    return this.request(args);
+  } else {
+    throw new Error("The provided location could not be geocoded");
+  }
 };
 
 module.exports = weatherAPI;
