@@ -1,5 +1,5 @@
 {
-  "name": "dark-sky-wrapper",
+  "name": "@poc967/dark-sky-wrapper",
   "version": "1.0.0",
   "description": "A simple wrapper for interacting with the darksky API",
   "main": "index.js",
