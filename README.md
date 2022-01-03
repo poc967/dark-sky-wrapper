@@ -4,24 +4,24 @@ This is a simple node.js wrapper for the darksky weather API. Program uses the M
 
 ## Usage
 
-`npm install --save dark-sky-wrapper`
+`npm install @poc967/dark-sky-wrapper@1.0.0`
 
 Initialize the package and set the api key from darksky and mapquest
 
 ```javascript
-var api = new weatherAPI("yourDarkskyAPIKey", "yourMapQuestAPIKey");
+var api = new weatherAPI('yourDarkskyAPIKey', 'yourMapQuestAPIKey');
 ```
 
 Make a call for current weather for a particular place by city, state, zip, or full address
 
 ```javascript
-api.getCurrentWeather("Boston").then((data) => console.log(data));
+api.getCurrentWeather('Boston').then((data) => console.log(data));
 ```
 
 You can also make a call for a weekly forecast
 
 ```javascript
-api.getWeeklyForecast("Boston").then((data) => console.log(data));
+api.getWeeklyForecast('Boston').then((data) => console.log(data));
 ```
 
 **Response:**
